@@ -1,9 +1,11 @@
 {
   "name": "vuepress-auto-navbar",
-  "version": "1.0.1",
-  "description": "一个自动生成vuepress导航栏插件",
+  "version": "1.0.0",
+  "description": "自动生成vuepress导航栏",
   "keywords": [
-    "vuepress-plugin"
+    "vuepress-plugin",
+    "vuepress",
+    "vuepress@^2"
   ],
   "main": "lib/index.js",
   "files": [
@@ -14,7 +16,15 @@
     "build": "rollup -c ./rollup.config.build.js"
   },
   "author": "merlin218",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Merlin218/vuepress-auto-navbar.git"
+  },
+  "homepage": "https://github.com/Merlin218/vuepress-auto-navbar/blob/master/README.md",
+  "bugs": {
+    "url": "https://github.com/Merlin218/vuepress-auto-navbar/issues"
+  },
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
@@ -32,5 +42,15 @@
     "rollup-watch": "^4.3.1",
     "tslib": "^2.3.1",
     "typescript": "^4.6.2"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "eslint-scope": "^7.1.1",
+    "eslint-utils": "^3.0.0",
+    "mime-types": "^2.1.34",
+    "multicast-dns-service-types": "^1.1.0",
+    "eslint-visitor-keys": "^3.3.0"
   }
 }

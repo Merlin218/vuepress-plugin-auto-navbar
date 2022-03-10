@@ -1,6 +1,6 @@
 # vuepress-auto-navbar
 
-vuepress导航栏自动生成
+vuepress导航栏自动生成插件
 
 [效果预览](https://www.merlin218.top)
 

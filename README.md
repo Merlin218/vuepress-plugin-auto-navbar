@@ -1,4 +1,4 @@
-# vuepress-auto-navbar
+# vuepress-plugin-auto-navbar
 
 vuepress导航栏自动生成
 
@@ -32,7 +32,7 @@ module.exports = {
   themeConfig: {
     navbar: AutoNavPlugin({
       subNav: {
-        show: ['其他', '工具使用', 'Vue', '设计模式', '前端工程化', '计算机网络']
+        show: ['其他', '工具使用', 'Vue', '设计模式', '前端工程化', '计算机网络'] // 在导航中展示目录下的内容
       },
       ignore: {
         folders: ["node_modules", "assets", "public", ".vuepress", "code", ".obsidian", "utils"], // 需要排除的一些目录

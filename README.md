@@ -1,4 +1,4 @@
-# vuepress-auto-navbar
+# vuepress-plugin-auto-navbar
 
 vuepress导航栏自动生成
 

@@ -1,13 +1,11 @@
-interface Options {
-    subNav?: {
-        show?: string[];
-    };
-    ignore?: {
-        folders?: string[];
-        files?: string[];
-    };
-}
-declare const AutoNavPlugin: (options?: Options) => ({
+/**
+ * @description: 获取导航配置项
+ * @param {string} path 目录路径
+ * @param {string} unDirIncludes 排除文件
+ * @param {string} prefix 父级前缀
+ * @return {*} 返回nav配置
+ */
+declare const getNav: (path: string, unDirIncludes?: string[], showSubNavCtx?: string[]) => ({
     text: string;
     link: string;
     children: (string | {
@@ -27,4 +25,4 @@ declare const AutoNavPlugin: (options?: Options) => ({
     children: string[];
     link?: undefined;
 })[];
-export default AutoNavPlugin;
+export { getNav };

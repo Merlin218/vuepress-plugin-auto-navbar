@@ -27,4 +27,5 @@ declare const AutoNavPlugin: (options?: Options) => ({
     children: string[];
     link?: undefined;
 })[];
-export default AutoNavPlugin;
+
+export { AutoNavPlugin as default };

@@ -1,4 +1,4 @@
-import FileHelper from '@/utils/fileHelper'
+import FileHelper from './utils/fileHelper'
 
 /**
  * @description: 获取导航配置项
@@ -12,13 +12,13 @@ const getNav = (path: string, unDirIncludes: string[] = [], showSubNavCtx: strin
   return allCurDirs.map((dir: string) => {
     const text = dir.substring(dir.lastIndexOf('/') + 1);
     const link = dir.substring(dir.lastIndexOf('/')) + '/';
-    return hasSubDirs(dir, unDirIncludes) ? {
+    return FileHelper.hasSubDirs(dir, unDirIncludes) ? {
       text,
       link,
       children: getSubNav(dir, unDirIncludes, link, showSubNavCtx)
     } : {
       text,
-      children: getMdFiles(dir, link)
+      children: FileHelper.getMdFiles(dir, link)
     }
   });
 }
@@ -33,14 +33,14 @@ const getNav = (path: string, unDirIncludes: string[] = [], showSubNavCtx: strin
 const getSubNav = (path: string, unDirIncludes: string[] = [], prefix = '/', showSubNavCtx: string[] = []) => {
   // 获取全部子目录路径
   const allCurDirs = FileHelper.getAllCurDirs(path, unDirIncludes);
-  return [...getMdFiles(path, prefix), ...allCurDirs.map((dir: string) => {
+  return [...FileHelper.getMdFiles(path, prefix), ...allCurDirs.map((dir: string) => {
     // 处理配置
     const text = dir.substring(dir.lastIndexOf('/') + 1)
     const link = prefix + text + '/'
     // 创建README.md
     FileHelper.createREADME(dir);
     // 如果存在符合条件的子目录
-    if (hasSubDirs(dir, unDirIncludes)) {
+    if (FileHelper.hasSubDirs(dir, unDirIncludes)) {
       // 获取子目录的nav配置
       const subFolder = FileHelper.getAllCurDirs(dir, unDirIncludes).map((subFolderDir: string) => {
         const subFolderText = subFolderDir.substring(subFolderDir.lastIndexOf('/') + 1)
@@ -62,33 +62,12 @@ const getSubNav = (path: string, unDirIncludes: string[] = [], prefix = '/', sho
     return {
       text,
       link,
-      children: showSubNavCtx.includes(text) ? getMdFiles(dir, link) : []
+      children: showSubNavCtx.includes(text) ? FileHelper.getMdFiles(dir, link) : []
     }
   })];
 }
 
-/**
- * @description: 判断是否存在子目录
- * @param {string} path 目录路径
- * @param {string} unDirIncludes 排除文件
- * @return {*} 返回布尔值
- */
-const hasSubDirs = (path: string, unDirIncludes: string[] = []) => {
-  return FileHelper.getAllCurDirs(path, unDirIncludes).length !== 0
-}
 
-/**
- * @description: 获取子目录文件
- * @param {string} path 目录路径
- * @param {string} prefix 文件前缀
- * @return {array} 返回带前缀的文件名列表
- */
-const getMdFiles = (path: string, prefix = '') => {
-  const files = FileHelper.getAllFiles(path, ['md'])
-  //自动在该目录下生成README文件
-  FileHelper.createREADME(path);
-  return files.map((item:string) => prefix + item);
-}
 
 
 export { getNav }

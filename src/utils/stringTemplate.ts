@@ -1,5 +1,10 @@
-import { FileConfig, FolderConfig } from "../types";
+type FolderConfig = {
+  title: string,
+  link?: string,
+  children: (string | FolderConfig)[]
+}[]
 
+type FileConfig = string[]
 
 const commonTop = (config: { title: string }) => `---
 sidebar: false
@@ -13,13 +18,13 @@ title: `+ config.title + `
  * @param {string} title 生成页面标题
  * @return {*}
  */
-const READMETemplate = (config: { files: FileConfig, folders: FolderConfig }, title: string) => {
+const READMETemplate = (config: { files: FileConfig, folders: FolderConfig }, title: string): any => {
   //  如果为空数组
   if (config['files'].length === 0 && config['folders'].length === 0) return '';
 
   return commonTop({ title }) + `
   
-  ` + config['files'].map(item => `
+  ` + config['files'].map((item:string) => `
 - [${item.replace('.md', '')}](${item})
 
   `).join('') + config['folders'].map((item: any) => {

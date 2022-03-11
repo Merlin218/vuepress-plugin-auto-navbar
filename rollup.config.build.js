@@ -26,7 +26,7 @@ export default [{
   input: resolvePath('./src/types/index.d.ts'),
   output: {
     file: resolvePath('./', './lib/index.d.ts'),
-    format: 'es',
+    format: 'cjs',
   },
   plugins: [dts()],
 }];

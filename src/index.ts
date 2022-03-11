@@ -1,5 +1,5 @@
 import { getNav } from './handleNav'
-import { resolve } from 'path'
+import { resolve } from 'path';
 
 interface Options {
   subNav?: {
@@ -28,9 +28,9 @@ const AutoNavPlugin = (options: Options = {
       folders: [],
       files: []
     }
-  },options)
+  }, options)
   const path = resolve(process.cwd(), 'docs');
   return getNav(path, options.ignore?.folders, options.subNav?.show)
 }
 
-export default AutoNavPlugin
+export { AutoNavPlugin } 

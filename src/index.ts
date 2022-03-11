@@ -33,4 +33,4 @@ const AutoNavPlugin = (options: Options = {
   return getNav(path, options.ignore?.folders, options.subNav?.show)
 }
 
-export { AutoNavPlugin } 
+export { AutoNavPlugin as default };

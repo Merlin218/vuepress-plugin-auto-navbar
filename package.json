@@ -1,6 +1,6 @@
 {
   "name": "vuepress-plugin-auto-navbar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "自动生成vuepress导航栏",
   "keywords": [
     "vuepress-plugin",
@@ -13,7 +13,7 @@
     "lib"
   ],
   "scripts": {
-    "dev:types":"tsc -w",
+    "dev:types": "tsc -w",
     "dev": "rollup -c ./rollup.config.dev.js -w",
     "build": "tsc && rollup -c ./rollup.config.build.js"
   },

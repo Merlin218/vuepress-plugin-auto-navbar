@@ -9,11 +9,12 @@ vuepress导航栏自动生成
 - 支持功能
     - [x] 自动生成navbar配置
     - [x] 自动生成目录README文件
+    - [x] TypeScript支持
+
 
 - 下一步优化:
    - [ ] 支持README模板自定义
    - [ ] 插件配置待丰富
-   - [ ] TypeScript支持
 
 ## Usage
 
@@ -26,7 +27,7 @@ pnpm i vuepress-auto-navbar
 2. 在`vuepressp`配置中使用插件，示例如下
 
 ```ts
-const AutoNavPlugin = require('vuepress-auto-navbar')
+import AutoNavPlugin from 'vuepress-plugin-auto-navbar'
 
 module.exports = {
   themeConfig: {

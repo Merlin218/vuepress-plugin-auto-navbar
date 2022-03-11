@@ -7,7 +7,7 @@ interface Options {
   },
   ignore?: {
     folders?: string[]
-    files?: string[]
+    // files?: string[]
   }
 }
 
@@ -17,7 +17,7 @@ const AutoNavPlugin = (options: Options = {
   },
   ignore: {
     folders: [],
-    files: []
+    // files: []
   }
 }) => {
   options = Object.assign({
@@ -26,7 +26,7 @@ const AutoNavPlugin = (options: Options = {
     },
     ignore: {
       folders: [],
-      files: []
+      // files: []
     }
   }, options)
   const path = resolve(process.cwd(), 'docs');

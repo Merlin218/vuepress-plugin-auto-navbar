@@ -20,7 +20,7 @@ vuepress导航栏自动生成
 1. 安装插件
 
 ```bash
-pnpm i -D vuepress-auto-navbar
+pnpm i vuepress-auto-navbar
 ```
 
 2. 在`vuepressp`配置中使用插件，示例如下

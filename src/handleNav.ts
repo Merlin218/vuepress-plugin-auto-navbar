@@ -67,7 +67,4 @@ const getSubNav = (path: string, unDirIncludes: string[] = [], prefix = '/', sho
   })];
 }
 
-
-
-
 export { getNav }

@@ -24,7 +24,7 @@ vuepress导航栏自动生成
 pnpm i vuepress-auto-navbar
 ```
 
-2. 在`vuepressp`配置中使用插件，示例如下
+2. 在`vuepress`配置中使用插件，示例如下
 
 ```ts
 import AutoNavPlugin from 'vuepress-plugin-auto-navbar'
@@ -32,12 +32,8 @@ import AutoNavPlugin from 'vuepress-plugin-auto-navbar'
 module.exports = {
   themeConfig: {
     navbar: AutoNavPlugin({
-      subNav: {
-        show: ['其他', '工具使用', 'Vue', '设计模式', '前端工程化', '计算机网络'] // 在导航中展示目录下的内容
-      },
-      ignore: {
-        folders: ["node_modules", "assets", "public", ".vuepress", "code", ".obsidian", "utils"], // 需要排除的一些目录
-      }
+      subNavShow: ['其他', '工具使用', 'Vue', '设计模式', '前端工程化', '计算机网络', '算法基础', '刷题技巧'], // 要显示子目录的目录
+      ignoreFolders: ["node_modules", "assets", "public", ".vuepress", "code", ".obsidian", "utils"], // 需要排除的一些目录
     })
 };
 ```

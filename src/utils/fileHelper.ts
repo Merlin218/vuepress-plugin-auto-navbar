@@ -35,7 +35,7 @@ const isNotReadme = (filename: string) => filename.toLocaleLowerCase() !== "read
  * @param {Array} unDirIncludes 需要排除的某些目录(文件夹)
  * @returns {Array} allDirs 所有的目录
  */
-const getAllDirs = (dir = ".", unDirIncludes: string[] = []) => {
+const getAllDirs = (dir = ".", unDirIncludes: string[]) => {
   // 获取目录数据
   const items = readdirSync(dir);
   let allDirs: string[] = [];
@@ -56,7 +56,7 @@ const getAllDirs = (dir = ".", unDirIncludes: string[] = []) => {
  * @param {Array} unDirIncludes 需要排除的某些目录(文件夹)
  * @returns {Array} 子目录列表
  */
-const getAllCurDirs = (dir = ".", unDirIncludes: string[] = []): string[] => {
+const getAllCurDirs = (dir = ".", unDirIncludes: string[]): string[] => {
   // 获取目录数据
   const items = readdirSync(dir);
   const allCurDirs: string[] = [];

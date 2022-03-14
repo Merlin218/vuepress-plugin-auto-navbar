@@ -1,12 +1,8 @@
-interface Options {
-    subNav?: {
-        show?: string[];
-    };
-    ignore?: {
-        folders?: string[];
-        files?: string[];
-    };
+declare interface Options {
+    subNavShow?: string[]
+    ignoreFolders?: string[]
 }
+
 declare const AutoNavPlugin: (options?: Options) => ({
     text: string;
     link: string;

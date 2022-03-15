@@ -83,7 +83,7 @@ const createREADME = (dir: string, unDirIncludes: string[] = []) => {
       return {
         title: item.substring(item.lastIndexOf('/') + 1),
         link: item.replace(dir, '.'),
-        children: getAllFiles(item, ['md']) || []
+        items: getAllFiles(item, ['md']) || []
       }
     })
   }

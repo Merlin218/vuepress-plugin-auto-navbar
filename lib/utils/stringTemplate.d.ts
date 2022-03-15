@@ -1,7 +1,7 @@
 declare type FolderConfig = {
     title: string;
     link?: string;
-    children: (string | FolderConfig)[];
+    items: (string | FolderConfig)[];
 }[];
 declare type FileConfig = string[];
 declare const _default: {

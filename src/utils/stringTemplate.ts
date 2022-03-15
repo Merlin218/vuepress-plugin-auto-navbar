@@ -1,13 +1,12 @@
 type FolderConfig = {
   title: string,
   link?: string,
-  children: (string | FolderConfig)[]
+  items: (string | FolderConfig)[]
 }[]
 
 type FileConfig = string[]
 
 const commonTop = (config: { title: string }) => `---
-sidebar: false
 title: `+ config.title + `
 ---
 ## 该章节包含以下内容`
@@ -29,13 +28,13 @@ const READMETemplate = (config: { files: FileConfig, folders: FolderConfig }, ti
 
   `).join('') + config['folders'].map((item: any) => {
     // 获取该每个子目录的md文件
-    const childrenTemplate = item.children.map((child: string) => `
+    const itemsTemplate = item.items.map((child: string) => `
 - [${child.replace('.md', '')}](${item.link + '/' + child})
 
   `).join('');
     return `
 #### [${item.title}专题](${item.link})
-    ` + childrenTemplate
+    ` + itemsTemplate
   }).join('');
 }
 

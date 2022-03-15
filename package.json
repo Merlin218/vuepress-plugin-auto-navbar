@@ -13,9 +13,8 @@
     "lib"
   ],
   "scripts": {
-    "dev:types": "tsc -w",
-    "dev": "rollup -c ./rollup.config.dev.js -w",
-    "build": "tsc && rollup -c ./rollup.config.build.js"
+    "dev": "tsc -w",
+    "build": "tsc"
   },
   "author": "merlin218",
   "license": "MIT",
@@ -33,6 +32,7 @@
     "@types/node": "^17.0.21",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
+    "@vuepress/types": "^1.9.7",
     "eslint": "^8.10.0",
     "rollup": "^2.70.0",
     "rollup-plugin-dts": "^4.2.0",

@@ -1,29 +1,15 @@
-/*
- * @Author: your name
- * @Date: 2022-03-10 20:18:37
- * @LastEditTime: 2022-03-14 17:14:58
- * @LastEditors: Please set LastEditors
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /vuepress-auto-navbar-plugin/src/index.ts
- */
 import { getNav } from './handleNav'
 import { resolve } from 'path';
+import { Options } from './types';
 
-interface Options {
-  subNavShow?: string[]
-  ignoreFolders?: string[]
-}
+import {setOptions,defaultOptions} from './defaultConfig'
 
-const AutoNavPlugin = (options: Options = {
-  subNavShow: [],
-  ignoreFolders: []
-}) => {
-  options = Object.assign({
-    subNavShow: [],
-    ignoreFolders: []
-  }, options)
+const AutoNavPlugin = (options: Partial<Options>) => {
+  if(!options) options = defaultOptions
+  const assignOptions = Object.assign({}, defaultOptions, options)
+  setOptions(assignOptions)
   const path = resolve(process.cwd(), 'docs');
-  return getNav(path, options.ignoreFolders, options.subNavShow);
+  return getNav(path, options.ignoreFolders, options.subNavShow,0);
 }
 
-export { AutoNavPlugin as default };
+export default AutoNavPlugin;

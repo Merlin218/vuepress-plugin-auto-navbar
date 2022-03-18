@@ -11,6 +11,7 @@
     // "checkJs": true,                             /* 报告 javascript 文件中的错误 */
     // "jsx": "preserve",                           /* 指定 jsx 代码的生成: 'preserve', 'react-native', 'react', 'react-jsx' 或者 'react-jsxdev'. */
     "declaration": true,                         /* 生成相应的 '.d.ts' 文件 */
+    "declarationDir":"lib/types",
     // "declarationMap": true,                      /* 对每个 '.d.ts' 文件进行遍历 */
     // "sourceMap": true,                           /* 生成相应的 '.map' 文件 */
     // "outFile": "./",                             /* 将输出文件合并为一个文件 */

@@ -9,7 +9,9 @@ const AutoNavPlugin = (options: Partial<Options>) => {
   const assignOptions = Object.assign({}, defaultOptions, options)
   setOptions(assignOptions)
   const path = resolve(process.cwd(), 'docs');
-  return getNav(path, options.ignoreFolders, options.subNavShow,0);
+  const nav = getNav(path,0);
+  console.log(nav);
+  return nav;
 }
 
 export default AutoNavPlugin;

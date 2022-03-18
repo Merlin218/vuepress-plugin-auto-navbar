@@ -3,6 +3,9 @@ import { Options } from "./types"
 let defaultOptions:Options = {
   subNavShow: [],
   ignoreFolders: [],
+  ignoreFiles:[],
+  dirPrefix : '📂  ',
+  filePrefix :'✏️  ',
   deep:2,
 }
 

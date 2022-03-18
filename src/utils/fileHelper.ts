@@ -1,6 +1,7 @@
 import path from 'path';
 import { readdirSync, statSync, writeFileSync } from 'fs'
 import Template from './stringTemplate'
+import { getOptions } from '../defaultConfig';
 
 /**
  *
@@ -8,17 +9,15 @@ import Template from './stringTemplate'
  * @param {Array} SuffixIncludes 需要处理的文件后缀
  * @returns
  */
-const getAllFiles = (dir: string, SuffixIncludes: string[] = []) => {
+const getCurFiles = (dir: string, SuffixIncludes: string[] = [],unFileIncludes:string[]=[]) => {
   // readdirSync 仅返回当前这层的数据
-  const filenameList = readdirSync(dir).filter((filename: string) => {
+  const filenameList = readdirSync(dir).sort().filter((filename: string) => {
     // statSync() 用来获取文件信息 stat => status
     const fileInfo = statSync(path.join(dir, filename));
     //获取后缀
     const suffix = filename.slice(filename.lastIndexOf(".") + 1);
-    return fileInfo.isFile() && SuffixIncludes.includes(suffix) && isNotReadme(filename)
+    return fileInfo.isFile() && SuffixIncludes.includes(suffix) && isNotReadme(filename) && !unFileIncludes.includes(filename)
   });
-  //  排序
-  filenameList.sort();
   return filenameList;
 };
 
@@ -56,7 +55,7 @@ const getAllDirs = (dir = ".", unDirIncludes: string[]) => {
  * @param {Array} unDirIncludes 需要排除的某些目录(文件夹)
  * @returns {Array} 子目录列表
  */
-const getAllCurDirs = (dir = ".", unDirIncludes: string[]): string[] => {
+const getCurDirs = (dir = ".", unDirIncludes: string[]): string[] => {
   // 获取目录数据
   const items = readdirSync(dir);
   const allCurDirs: string[] = [];
@@ -75,15 +74,15 @@ const getAllCurDirs = (dir = ".", unDirIncludes: string[]): string[] => {
  * @param {string} dir 文件目录
  * @return {*}
  */
-const createREADME = (dir: string, unDirIncludes: string[] = []) => {
+const createREADME = (dir: string, unDirIncludes: string[] = [],unFileIncludes:string[]=[]) => {
   // 获取md文件列表
   const configs = {
-    files: getAllFiles(dir, ['md']),
-    folders: getAllCurDirs(dir, unDirIncludes).map(item => {
+    files: getCurFiles(dir, ['md'],unFileIncludes),
+    folders: getCurDirs(dir, unDirIncludes).map(item => {
       return {
         title: item.substring(item.lastIndexOf('/') + 1),
         link: item.replace(dir, '.'),
-        items: getAllFiles(item, ['md']) || []
+        items: getCurFiles(item, ['md'],unFileIncludes) || []
       }
     })
   }
@@ -102,7 +101,7 @@ const createREADME = (dir: string, unDirIncludes: string[] = []) => {
 * @return {*} 返回布尔值
 */
 const hasSubDirs = (path: string, unDirIncludes: string[] = []) => {
-  return getAllCurDirs(path, unDirIncludes).length > 0
+  return getCurDirs(path, unDirIncludes).length > 0
 }
 
 /**
@@ -112,12 +111,13 @@ const hasSubDirs = (path: string, unDirIncludes: string[] = []) => {
  * @return {array} 返回带前缀的文件名列表
  */
 const getMdFiles = (path: string, prefix = '') => {
-  const files = getAllFiles(path, ['md'])
+  const options = getOptions();
+  const files = getCurFiles(path, ['md'], options.ignoreFiles)
   //自动在该目录下生成README文件
   createREADME(path);
   return files.map((item: string) => prefix + item);
 }
 
 export default {
-  getAllFiles, getAllDirs, getAllCurDirs, createREADME, hasSubDirs, getMdFiles
+  getCurFiles, getAllDirs, getCurDirs, createREADME, hasSubDirs, getMdFiles
 }

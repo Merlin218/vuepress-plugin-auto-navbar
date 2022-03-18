@@ -5,8 +5,7 @@
   "type": "module",
   "keywords": [
     "vuepress-plugin",
-    "vuepress",
-    "vuepress@^2"
+    "vuepress"
   ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

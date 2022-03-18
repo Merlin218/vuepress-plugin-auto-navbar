@@ -1,6 +1,6 @@
 import { getNav } from './handleNav'
 import { resolve } from 'path';
-import { Options } from './types';
+import { Options } from '../types/custom';
 
 import {setOptions,defaultOptions} from './defaultConfig'
 

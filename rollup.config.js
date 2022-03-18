@@ -5,8 +5,12 @@ export default {
   input: 'src/index.ts',
   output:[
     {
-      file: 'lib/index.js',
+      file: 'lib/esm/index.js',
       format: 'esm'
+    },
+    {
+      file: 'lib/cjs/index.js',
+      format: 'cjs'
     }
   ],
   plugins:[
@@ -16,6 +20,6 @@ export default {
       // 使用声明生成路径配置
       useTsconfigDeclarationDir: true,
     }),
-    terser(),
+    // terser(),
   ]
 };

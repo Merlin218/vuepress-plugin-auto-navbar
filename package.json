@@ -1,6 +1,6 @@
 {
   "name": "vuepress-plugin-auto-navbar",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "自动生成vuepress导航栏",
   "keywords": [
     "vuepress-plugin",

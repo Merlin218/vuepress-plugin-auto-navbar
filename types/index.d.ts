@@ -1,3 +1,2 @@
 import { Options } from '../types/custom';
-declare const AutoNavPlugin: (options: Partial<Options>) => import("@vuepress/types").NavItem[];
-export default AutoNavPlugin;
+export default function AutoNavPlugin(options: Partial<Options>): import("@vuepress/types").NavItem[];

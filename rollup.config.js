@@ -1,16 +1,15 @@
 import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+
 // rollup.config.js
 export default {
   input: 'src/index.ts',
   output:[
     {
-      file: 'lib/esm/index.js',
-      format: 'esm'
-    },
-    {
-      file: 'lib/cjs/index.js',
-      format: 'cjs'
+      file: 'lib/index.js',
+      format: 'cjs',
+      exports:'default'
     }
   ],
   plugins:[
@@ -20,6 +19,7 @@ export default {
       // 使用声明生成路径配置
       useTsconfigDeclarationDir: true,
     }),
-    // terser(),
+    nodeResolve(),
+    terser(),
   ]
 };

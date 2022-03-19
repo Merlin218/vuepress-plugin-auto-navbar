@@ -6,6 +6,7 @@ declare interface Options {
     ignoreFiles: string[]
     dirPrefix:string,
     filePrefix:string,
+    useREADME:boolean,
     deep:number
 }
 

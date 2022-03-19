@@ -13,7 +13,7 @@
     "types"
   ],
   "scripts": {
-    "dev": "rollup -c ./rollup.config.js",
+    "dev": "rollup -c ./rollup.config.js -w",
     "build": "rollup -c ./rollup.config.js"
   },
   "author": "merlin218",

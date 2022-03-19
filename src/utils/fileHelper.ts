@@ -55,14 +55,15 @@ const getAllDirs = (dir = ".", unDirIncludes: string[]) => {
  * @param {Array} unDirIncludes 需要排除的某些目录(文件夹)
  * @returns {Array} 子目录列表
  */
-const getCurDirs = (dir = ".", unDirIncludes: string[]): string[] => {
+const getCurDirs = (dir = "."): string[] => {
+  const options = getOptions()
   // 获取目录数据
   const items = readdirSync(dir);
   const allCurDirs: string[] = [];
   // 递归遍历目录中所有文件夹
   items.forEach((item: string) => {
     const dirName = path.join(dir, item);
-    if (statSync(dirName).isDirectory() && !unDirIncludes.includes(item)) {
+    if (statSync(dirName).isDirectory() && !options.ignoreFolders.includes(item)) {
       allCurDirs.push(dirName);
     }
   });
@@ -74,15 +75,16 @@ const getCurDirs = (dir = ".", unDirIncludes: string[]): string[] => {
  * @param {string} dir 文件目录
  * @return {*}
  */
-const createREADME = (dir: string, unDirIncludes: string[] = [],unFileIncludes:string[]=[]) => {
+const createREADME = (dir: string) => {
+  const options = getOptions();
   // 获取md文件列表
   const configs = {
-    files: getCurFiles(dir, ['md'],unFileIncludes),
-    folders: getCurDirs(dir, unDirIncludes).map(item => {
+    files: getCurFiles(dir, ['md'],options.ignoreFiles),
+    folders: getCurDirs(dir).map(item => {
       return {
         title: item.substring(item.lastIndexOf('/') + 1),
         link: item.replace(dir, '.'),
-        items: getCurFiles(item, ['md'],unFileIncludes) || []
+        items: getCurFiles(item, ['md'],options.ignoreFiles) || []
       }
     })
   }
@@ -100,8 +102,8 @@ const createREADME = (dir: string, unDirIncludes: string[] = [],unFileIncludes:s
 * @param {string} unDirIncludes 排除文件
 * @return {*} 返回布尔值
 */
-const hasSubDirs = (path: string, unDirIncludes: string[] = []) => {
-  return getCurDirs(path, unDirIncludes).length > 0
+const hasSubDirs = (path: string) => {
+  return getCurDirs(path).length > 0
 }
 
 /**
@@ -113,8 +115,6 @@ const hasSubDirs = (path: string, unDirIncludes: string[] = []) => {
 const getMdFiles = (path: string, prefix = '') => {
   const options = getOptions();
   const files = getCurFiles(path, ['md'], options.ignoreFiles)
-  //自动在该目录下生成README文件
-  createREADME(path);
   return files.map((item: string) => prefix + item);
 }
 

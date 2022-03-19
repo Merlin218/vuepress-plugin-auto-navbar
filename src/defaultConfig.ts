@@ -6,6 +6,7 @@ let defaultOptions:Options = {
   ignoreFiles:[],
   dirPrefix : '📂  ',
   filePrefix :'✏️  ',
+  useREADME:false,
   deep:2,
 }
 

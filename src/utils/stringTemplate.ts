@@ -33,7 +33,7 @@ const READMETemplate = (config: { files: FileConfig, folders: FolderConfig }, ti
 
   `).join('');
     return `
-#### [${item.title}专题](${item.link})
+#### [${item.title}](${item.link})
     ` + itemsTemplate
   }).join('');
 }

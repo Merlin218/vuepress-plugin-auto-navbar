@@ -16,7 +16,7 @@ const getNav =  (path: string,depth:number,prefix='/'):NavItem[]=> {
   FileHelper.getCurDirs(path, options.ignoreFolders).forEach((dir:string) => {
     const text = dir.substring(dir.lastIndexOf('/') + 1);
     const link = prefix+ text+ '/';
-    FileHelper.createREADME(dir);
+    if(depth > 0) FileHelper.createREADME(dir);
     if( FileHelper.hasSubDirs(dir, options.ignoreFolders) ){
       arr.push({
         text:`${options.dirPrefix}${text}`,

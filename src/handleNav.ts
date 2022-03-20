@@ -11,7 +11,6 @@ import {getOptions} from './defaultConfig';
  */
 const getNav =  (path: string,depth:number,prefix='/'):NavItem[]=> {
   const options = getOptions();
-  // if(depth >= options.deep) return [];
   const arr:NavItem[] = []
   FileHelper.getCurDirs(path).sort().forEach((dir:string) => {
     const text = dir.substring(dir.lastIndexOf('/') + 1);
@@ -20,7 +19,7 @@ const getNav =  (path: string,depth:number,prefix='/'):NavItem[]=> {
       arr.push({
         text: `${options.dirPrefix}${text}`,
         link: options.useREADME ? link : (subNav[0]?.link ?? link),
-        items: (depth === 0 || options.subNavShow.includes(text)) ? subNav :[]
+        [options.childrenKey]: (depth === 0 || options.subNavShow.includes(text)) ? subNav :[]
       });
   })
   // 获取当前目录的文件

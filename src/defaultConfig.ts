@@ -8,6 +8,7 @@ let defaultOptions:Options = {
   filePrefix :'✏️  ',
   useREADME:false,
   deep:2,
+  childrenKey:'items'
 }
 
 function setOptions(options:Options){

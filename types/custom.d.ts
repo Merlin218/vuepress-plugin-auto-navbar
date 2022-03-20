@@ -7,8 +7,10 @@ declare interface Options {
     dirPrefix:string,
     filePrefix:string,
     useREADME:boolean,
-    deep:number
+    deep:number,
+    childrenKey:childKeyType
 }
 
 declare const AutoNavPlugin: (options?: Options) => NavItem[];
   
+declare type childKeyType = 'items' | 'children'

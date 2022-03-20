@@ -12,6 +12,7 @@ vuepress导航栏自动生成
     - [x] 目录/文件前缀设置，默认为「 📂 」/「 ✏️ 」
     - [x] 目录/文件的过滤
     - [x] 读取深度设置
+    - [x] 兼容vuepress和vuepress@next
 - 下一步优化
    - [ ] 插件配置待丰富
    - [ ] 过滤支持正则
@@ -38,7 +39,8 @@ module.exports = {
       dirPrefix: '目录：',
       filePrefix: '文件：',
       useREADME: false, // 是否以README文件作为目录跳转后的展示内容，请确保该目录下包含README文件，否则默认使用「 第一个文件夹下的README文件 」或「 第一个文件 」作为展示内容
-      depth:2 // 读取目录的深度
+      depth:2, // 读取目录的深度
+      childrenKey:'items' // 指定子nav的字段
     })
 };
 ```
@@ -54,4 +56,5 @@ module.exports = {
 | filePrefix    | String   | ✏️      | 文件前缀修饰，有助于区分                                     |
 | useREADME     | Boolean  | false  | 是否以README文件作为目录跳转后的展示内容，请确保该目录下包含README文件，否则默认使用「 第一个文件夹下的README文件 」或「 第一个文件 」作为展示内容 |
 | depth         | Number   | 2      | 读取目录的深度                                               |
+| childrenKey   | 'items' \| 'children'  | 'items'      | 兼容vuepress和vuepress@next                                               |
 
